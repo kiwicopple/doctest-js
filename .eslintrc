@@ -1,0 +1,6 @@
+{
+  "extends": "airbnb",
+  "rules": {
+    "arrow-parens": ["error", "always"]
+  }
+}
