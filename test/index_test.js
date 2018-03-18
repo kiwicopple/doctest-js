@@ -1,15 +1,39 @@
 /* globals it describe */
 import { expect } from 'chai';
-import { double, doubleDouble } from '../src';
+import { parseComments } from '../src';
 
-describe('double', () => {
-  it('returns double the number passed in', () => {
-    expect(double(3)).to.equal(6);
-  });
-});
+const FIRST_SAMPLE_COMMENT = `
+/*
+ * yay docs!
+ * love em!
+ */
+`;
 
-describe('doubleDouble', () => {
-  it('returns quadruple the number passed in', () => {
-    expect(doubleDouble(3)).to.equal(12);
+const SECOND_SAMPLE_COMMENT = `
+/* woah
+ */
+`;
+
+const SAMPLE_JS_FILE_STRING = `
+import something from 'somewhere';
+
+${FIRST_SAMPLE_COMMENT}
+export function coolThing(...args) {
+  delete args;
+}
+
+
+${SECOND_SAMPLE_COMMENT}
+export const getCool = () => {};
+`;
+
+describe('parseComments', () => {
+  it('should return an array of comment chunks found in a .js file', () => {
+    const [firstParsedComment, secondParsedComment] = parseComments(
+      SAMPLE_JS_FILE_STRING,
+    );
+
+    expect(firstParsedComment).to.equal(FIRST_SAMPLE_COMMENT.trim());
+    expect(secondParsedComment).to.equal(SECOND_SAMPLE_COMMENT.trim());
   });
 });
