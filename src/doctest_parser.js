@@ -44,7 +44,7 @@ export default (text) => {
       state = IN_EXAMPLE;
       doctestIndex += 1;
       doctests[doctestIndex] = {
-        functionString: '',
+        resultString: '',
         returnString: '',
       };
     }
@@ -63,7 +63,7 @@ export default (text) => {
   // add chars to appropriate section
   lexer.addRule(/\n|./, (lexme) => {
     if (state === IN_EXAMPLE) {
-      doctests[doctestIndex].functionString += lexme;
+      doctests[doctestIndex].resultString += lexme;
     } else if (state === IN_RETURN_VALUE) {
       doctests[doctestIndex].returnString += lexme;
     }
@@ -76,8 +76,8 @@ export default (text) => {
 
   // trim everythhing
   const sanitizedDoctests = doctests.map(
-    ({ functionString, returnString }) => ({
-      functionString: functionString.trim(),
+    ({ resultString, returnString }) => ({
+      resultString: resultString.trim(),
       returnString: returnString.trim(),
     }),
   );

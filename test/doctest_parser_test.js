@@ -10,16 +10,16 @@ describe('parseDocs', () => {
     const file = fs.readFileSync(SAMPLE_MODULE, 'utf8');
     const [firstDoctest, secondDoctest, thirdDoctest, fourthDoctest] = parseDoctests(file);
 
-    expect(firstDoctest.functionString).to.equal('titleize(\'wOaH\')');
+    expect(firstDoctest.resultString).to.equal('titleize(\'wOaH\')');
     expect(firstDoctest.returnString).to.equal("'Woah'");
 
-    expect(secondDoctest.functionString).to.equal('titleize(\'w\')');
+    expect(secondDoctest.resultString).to.equal('titleize(\'w\')');
     expect(secondDoctest.returnString).to.equal('\'W\'');
 
-    expect(thirdDoctest.functionString).to.equal('stringData(  \'woah\')');
+    expect(thirdDoctest.resultString).to.equal('stringData(  \'woah\')');
     expect(thirdDoctest.returnString).to.equal('{  length: 4,  vowels: 2,  consonants: 2}');
 
-    expect(fourthDoctest.functionString).to.equal('split(\'why am i doing this?\', \' \')');
+    expect(fourthDoctest.resultString).to.equal('split(\'why am i doing this?\', \' \')');
     expect(fourthDoctest.returnString).to.equal('[ \'why\', \'am\', \'i\', \'doing\', \'this?\' ]');
   });
 });
