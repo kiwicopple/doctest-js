@@ -1,16 +1,18 @@
 /* eslint no-eval: "off" */
-export default (evalString) => {
+
+export const evalExpression = (evalString) => {
   try {
     return { result: eval(evalString) };
   } catch (error) {
-    const { constructor, message } = error;
-    if (constructor === SyntaxError && message === 'Unexpected token :') {
-      try {
-        return { result: eval(`(${evalString})`) };
-      } catch (objectError) {
-        return { error: objectError };
-      }
-    }
+    return { error };
+  }
+};
+
+export const evalValue = (evalString) => {
+  const wrappedEvalString = `(${evalString})`;
+  try {
+    return { result: eval(wrappedEvalString) };
+  } catch (error) {
     return { error };
   }
 };
