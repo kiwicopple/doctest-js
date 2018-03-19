@@ -1,5 +1,5 @@
-import parseComments from './comment_parser';
+import parseDoctests from './doctest_parser';
 
 module.exports = {
-  parseComments,
+  parseDoctests,
 };
