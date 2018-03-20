@@ -1,8 +1,8 @@
 {
-  "name": "js-doctest",
-  "version": "0.0.1",
+  "name": "jsdoc-test",
+  "version": "0.0.5",
   "description": "Run doc examples as tests",
-  "main": "index.js",
+  "main": "dist/index.js",
   "scripts": {
     "build": "webpack -p",
     "test": "mocha --require babel-register",
