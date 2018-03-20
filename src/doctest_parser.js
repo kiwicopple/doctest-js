@@ -14,12 +14,12 @@ const grammar = {
   },
 };
 
-// lexer parser setup
-const lexer = new Lexer();
-const parser = new Parser(grammar);
-parser.lexer = lexer;
-
 export default (text) => {
+  // lexer parser setup
+  const lexer = new Lexer();
+  const parser = new Parser(grammar);
+  parser.lexer = lexer;
+
   const doctests = [];
   let doctestIndex = -1;
   let state = NO_STATE;
@@ -75,12 +75,10 @@ export default (text) => {
   parser.parse(text);
 
   // trim everythhing
-  const sanitizedDoctests = doctests.map(
-    ({ resultString, returnString }) => ({
-      resultString: resultString.trim(),
-      returnString: returnString.trim(),
-    }),
-  );
+  const sanitizedDoctests = doctests.map(({ resultString, returnString }) => ({
+    resultString: resultString.trim(),
+    returnString: returnString.trim(),
+  }));
 
   return sanitizedDoctests;
 };

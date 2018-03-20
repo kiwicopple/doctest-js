@@ -14,12 +14,10 @@
   "author": "MainShayne233",
   "license": "MIT",
   "devDependencies": {
-    "babel-core": "^6.26.0",
     "babel-loader": "^7.1.4",
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-stage-0": "^6.24.1",
     "babel-register": "^6.26.0",
-    "chai": "^4.1.2",
     "eslint": "^4.19.0",
     "eslint-config-airbnb": "^16.1.0",
     "eslint-plugin-import": "^2.9.0",
@@ -33,6 +31,8 @@
     "webpack-cli": "^2.0.12"
   },
   "dependencies": {
+    "babel-core": "^6.26.0",
+    "chai": "^4.1.2",
     "jison": "^0.4.18",
     "lex": "^1.7.9"
   }

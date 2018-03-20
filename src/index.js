@@ -1,1 +1,3 @@
-export default () => true;
+import doctest from './doctest';
+
+export default doctest;
