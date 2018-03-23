@@ -4,8 +4,8 @@ import { expect } from 'chai';
 import parseDoctests from './doctest_parser';
 import evalDoctest from './safe_eval';
 
-const defaultTestingFunction = (actual, expected, filePath, index) => {
-  it(`${filePath} doctest ${index}`, () => {
+const defaultTestingFunction = (actual, expected, doctest) => {
+  it(`doctest: ${doctest.resultString}`, () => {
     if (actual.result && expected.result) {
       expect(actual.result).to.eql(expected.result);
     }
@@ -24,7 +24,7 @@ export default (filePath, options = {}) => {
       throw expected.error;
     } else {
       const { testingFunction = defaultTestingFunction } = options;
-      testingFunction(actual, expected, filePath, index);
+      testingFunction(actual, expected, doctest, index);
     }
   });
 };

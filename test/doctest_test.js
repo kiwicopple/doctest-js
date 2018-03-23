@@ -12,7 +12,7 @@ describe('passing doctest', () => {
 
 describe('failing doctest', () => {
   doctest(SAMPLE_FAILING_MODULE_PATH, {
-    testingFunction: (actual, expected, filePath, index) => {
+    testingFunction: (actual, expected, _doctest, index) => {
       if (index === 4) {
         it('should fail', () => {
           expect(actual.result).to.not.eql(expected.result);

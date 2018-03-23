@@ -75,7 +75,7 @@ But this function can be overridden by any function that takes three arguments:
 ```javascript
 describe('stringData Doctests', () => {
   doctest('src/string/index.js', {
-    testingFunction: (functionName, actual, expected) => {
+    testingFunction: (actual, expected, doctestObject, doctestIndex) => {
       if (actual === expected) console.log(functionName + ', you did it!');
       else console.log('Better luck next time, ' + functionName);
     },
