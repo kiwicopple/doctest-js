@@ -71,7 +71,16 @@ it(`${functionName} should match its doc example value`, () => {
 
 But this function can be overridden by any function that takes three arguments:
 
-`(functionName, actualReturnValue, expectedReturnValue)`.
+`(actualValue, expectedValue, doctestObject, doctestIndex)`.
+
+Where the `doctestObject` is the parsed doctest that looks like:
+
+```
+{
+  resultString: 'titleize('WoAh')',
+  returnSTring: 'Woah',
+}
+```
 
 ```javascript
 describe('stringData Doctests', () => {
