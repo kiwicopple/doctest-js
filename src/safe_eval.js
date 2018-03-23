@@ -1,6 +1,7 @@
 /* eslint no-eval: "off", no-console: "off" */
 import * as babel from 'babel-core';
 import fs from 'fs';
+import path from 'path';
 
 const getBabelConfig = () => {
   try {
@@ -19,11 +20,10 @@ const getBabelConfig = () => {
 
 const BABEL_CONFIG = getBabelConfig();
 
-export const evalExpression = (evalString, module = '1') => {
+export const evalExpression = (evalString, module = '1', filePath) => {
   try {
-    const code = `${module}; ${evalString}`;
-    const transformedCode = babel.transform(code, BABEL_CONFIG).code;
-    const result = eval(transformedCode);
+    const code = `require('${filePath}').${evalString}`;
+    const result = eval(code);
     return { result };
   } catch (error) {
     return { error };
@@ -39,8 +39,9 @@ export const evalValue = (evalString) => {
   }
 };
 
-export default ({ resultString, returnString }, module) => {
-  const actual = evalExpression(resultString, module);
+export default ({ resultString, returnString }, module, filePath) => {
+  const fullPath = path.join(process.cwd(), filePath);
+  const actual = evalExpression(resultString, module, fullPath);
   const expected = evalValue(returnString);
   return { actual, expected };
 };

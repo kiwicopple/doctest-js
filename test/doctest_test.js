@@ -30,6 +30,6 @@ describe('error doctest', () => {
   it('should raise an error', () => {
     expect(() => {
       doctest(SAMPLE_ERROR_MODULE_PATH);
-    }).to.throw('Unexpected token, expected ,');
+    }).to.throw(Error);
   });
 });

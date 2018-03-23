@@ -3,18 +3,6 @@ import { expect } from 'chai';
 import { evalExpression, evalValue } from '../src/safe_eval';
 
 describe('evalExpression', () => {
-  it('should properly resolve expressions', () => {
-    const evalString = 'var fun = () => 3; fun()';
-    const { result } = evalExpression(evalString);
-    expect(result).to.equal(3);
-  });
-
-  it('should properly resolve expressions', () => {
-    const evalString = 'var fun = () => 3; fun()';
-    const { result } = evalExpression(evalString);
-    expect(result).to.equal(3);
-  });
-
   it('should gracefully handle syntax errors', () => {
     const evalString = 'varvar funfun == () =>';
     const { error } = evalExpression(evalString);
@@ -24,7 +12,7 @@ describe('evalExpression', () => {
   it('should gracefully handle runtime errors', () => {
     const evalString = 'nonExistantFunction()';
     const { error } = evalExpression(evalString);
-    expect(error.constructor).to.equal(ReferenceError);
+    expect(error.constructor).to.equal(Error);
   });
 });
 

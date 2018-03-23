@@ -16,7 +16,7 @@ export default (filePath, options = {}) => {
   const file = fs.readFileSync(filePath, 'utf8');
   const doctests = parseDoctests(file);
   doctests.forEach((doctest, index) => {
-    const { actual, expected } = evalDoctest(doctest, file);
+    const { actual, expected } = evalDoctest(doctest, file, filePath);
 
     if (actual.error) {
       throw actual.error;
