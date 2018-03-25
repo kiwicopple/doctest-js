@@ -78,7 +78,7 @@ Where the `doctestObject` is the parsed doctest that looks like:
 ```
 {
   resultString: 'titleize('WoAh')',
-  returnSTring: 'Woah',
+  stringToEval: 'Woah',
 }
 ```
 

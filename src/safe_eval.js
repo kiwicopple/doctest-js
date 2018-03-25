@@ -39,9 +39,9 @@ export const evalValue = (evalString) => {
   }
 };
 
-export default ({ resultString, returnString }, module, filePath) => {
+export default ({ resultString, stringToEval }, module, filePath) => {
   const fullPath = path.join(process.cwd(), filePath);
   const actual = evalExpression(resultString, module, fullPath);
-  const expected = evalValue(returnString);
+  const expected = evalValue(stringToEval);
   return { actual, expected };
 };

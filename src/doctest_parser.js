@@ -45,7 +45,7 @@ export default (text) => {
       doctestIndex += 1;
       doctests[doctestIndex] = {
         resultString: '',
-        returnString: '',
+        stringToEval: '',
       };
     }
   });
@@ -65,7 +65,7 @@ export default (text) => {
     if (state === IN_EXAMPLE) {
       doctests[doctestIndex].resultString += lexme;
     } else if (state === IN_RETURN_VALUE) {
-      doctests[doctestIndex].returnString += lexme;
+      doctests[doctestIndex].stringToEval += lexme;
     }
   });
 
@@ -75,9 +75,9 @@ export default (text) => {
   parser.parse(text);
 
   // trim everythhing
-  const sanitizedDoctests = doctests.map(({ resultString, returnString }) => ({
+  const sanitizedDoctests = doctests.map(({ resultString, stringToEval }) => ({
     resultString: resultString.trim(),
-    returnString: returnString.trim(),
+    stringToEval: stringToEval.trim(),
   }));
 
   return sanitizedDoctests;
