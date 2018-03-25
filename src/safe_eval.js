@@ -1,26 +1,7 @@
 /* eslint no-eval: "off", no-console: "off" */
-import * as babel from 'babel-core';
-import fs from 'fs';
 import path from 'path';
 
-const getBabelConfig = () => {
-  try {
-    const file = fs.readFileSync('.babelrc', 'utf8');
-    if (file) {
-      return JSON.parse(file);
-    }
-
-    throw new Error('no .babelrc');
-  } catch (error) {
-    console.warn('failed to load .babelrc. attempting without', error);
-
-    return {};
-  }
-};
-
-const BABEL_CONFIG = getBabelConfig();
-
-export const evalExpression = (evalString, module = '1', filePath) => {
+export const evalExpression = (evalString, filePath) => {
   try {
     const code = `require('${filePath}').${evalString}`;
     const result = eval(code);
@@ -39,9 +20,9 @@ export const evalValue = (evalString) => {
   }
 };
 
-export default ({ resultString, stringToEval }, module, filePath) => {
-  const fullPath = path.join(process.cwd(), filePath);
-  const actual = evalExpression(resultString, module, fullPath);
+export default ({ resultString, stringToEval }, filePath) => {
+  const fullFilePath = path.join(process.cwd(), filePath);
+  const actual = evalExpression(resultString, fullFilePath);
   const expected = evalValue(stringToEval);
   return { actual, expected };
 };
