@@ -1,6 +1,6 @@
 {
   "name": "jsdoc-test",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "description": "Run doc examples as tests",
   "main": "dist/index.js",
   "scripts": {
@@ -31,6 +31,7 @@
   },
   "dependencies": {
     "babel-core": "^6.26.3",
+    "babel-register": "^6.26.0",
     "chai": "^4.1.2",
     "jison": "^0.4.18",
     "lex": "^1.7.9"
