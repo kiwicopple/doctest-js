@@ -11,7 +11,7 @@
     "format": "prettier {src,test}/**/*.js  webpack.config.js  --write",
     "precommit": "pretty-quick --staged"
   },
-  "author": "MainShayne233",
+  "author": "Supabase",
   "license": "MIT",
   "devDependencies": {
     "babel-loader": "^7.1.4",
