@@ -1,5 +1,5 @@
 {
-  "name": "jsdoc-test",
+  "name": "@supabase/doctest-js",
   "version": "0.0.10",
   "description": "Run doc examples as tests",
   "main": "dist/index.js",
