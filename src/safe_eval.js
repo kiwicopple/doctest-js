@@ -20,9 +20,17 @@ export const evalValue = (evalString) => {
   }
 };
 
-export default ({ resultString, stringToEval }, filePath) => {
+export default ({ resultString, stringToEval }, filePath, instance) => {
   const fullFilePath = path.join(process.cwd(), filePath);
-  const actual = evalExpression(resultString, fullFilePath);
-  const expected = evalValue(stringToEval);
-  return { actual, expected };
+
+  if (!instance) {
+    const actual = evalExpression(resultString, fullFilePath);
+    const expected = evalValue(stringToEval);
+    return { actual, expected };
+  } else {
+    const result = eval(`instance.${resultString};`);
+    const actual = { result };
+    const expected = evalValue(stringToEval);
+    return { actual, expected };
+  }
 };

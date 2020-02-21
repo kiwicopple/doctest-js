@@ -23,6 +23,7 @@ export default (text) => {
   const doctests = [];
   let doctestIndex = -1;
   let state = NO_STATE;
+  let isClass = false;
 
   // begin multi-line comment
   lexer.addRule(/\/\*/, () => {
@@ -58,7 +59,12 @@ export default (text) => {
   });
 
   // ignore multi-line comment start
+  // this is a bit naive as it only uses spaces/indentation to cleanse
   lexer.addRule(/\n \* /, () => {});
+  lexer.addRule(/\n  \* /, () => {});
+  lexer.addRule(/\n   \* /, () => {});
+  lexer.addRule(/\n    \* /, () => {});
+  lexer.addRule(/\n     \* /, () => {});
 
   // add chars to appropriate section
   lexer.addRule(/\n|./, (lexme) => {
