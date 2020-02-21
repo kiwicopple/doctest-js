@@ -13,7 +13,6 @@ describe('parseDocs', () => {
       secondDoctest,
       thirdDoctest,
       fourthDoctest,
-      fifthDoctest,
     ] = parseDoctests(FILE);
 
     expect(firstDoctest.resultString).to.equal("titleize('wOaH')");
