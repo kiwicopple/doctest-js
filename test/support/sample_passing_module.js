@@ -66,12 +66,9 @@ export function split(string, delimter) {
  * @example
  * add(1, 2)
  * //=> 3 
- * @example
- * add(3, 4)
- * //=>
- * 7
- * @example
- * add(3, 4)
+ * @example add(3, 4)
+ * //=> 7
+ * @example add(3, 4)
  * //=> 7
  */
 export function add(a, b) {
