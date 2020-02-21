@@ -13,6 +13,7 @@ describe('parseDocs', () => {
       secondDoctest,
       thirdDoctest,
       fourthDoctest,
+      fifthDoctest,
     ] = parseDoctests(FILE);
 
     expect(firstDoctest.resultString).to.equal("titleize('wOaH')");
@@ -25,11 +26,15 @@ describe('parseDocs', () => {
     expect(thirdDoctest.stringToEval).to.equal(
       '{  length: 4,  vowels: 2,  consonants: 2}',
     );
+    expect(fourthDoctest.resultString).to.equal("stringData(  'woah')");
+    expect(fourthDoctest.stringToEval).to.equal(
+      '{  length: 4,  vowels: 2,  consonants: 2}',
+    );
 
-    expect(fourthDoctest.resultString).to.equal(
+    expect(fifthDoctest.resultString).to.equal(
       "split('why am i doing this?', ' ')",
     );
-    expect(fourthDoctest.stringToEval).to.equal(
+    expect(fifthDoctest.stringToEval).to.equal(
       "[ 'why', 'am', 'i', 'doing', 'this?' ]",
     );
   });
