@@ -60,11 +60,13 @@ export default (text) => {
 
   // ignore multi-line comment start
   // this is a bit naive as it only uses spaces/indentation to cleanse
+  lexer.addRule(/\n\* /, () => {});
   lexer.addRule(/\n \* /, () => {});
   lexer.addRule(/\n  \* /, () => {});
   lexer.addRule(/\n   \* /, () => {});
   lexer.addRule(/\n    \* /, () => {});
   lexer.addRule(/\n     \* /, () => {});
+  lexer.addRule(/\n      \* /, () => {});
 
   // add chars to appropriate section
   lexer.addRule(/\n|./, (lexme) => {

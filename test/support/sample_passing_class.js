@@ -7,7 +7,6 @@ class Arithmatic {
    * @example
    * add(1, 2)
    * //=> 3
-   *
    * @example
    * add(1, 9)
    * //=> 10

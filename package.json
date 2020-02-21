@@ -8,8 +8,7 @@
     "test": "mocha --require babel-register",
     "test:watch": "npm run test -- --watch",
     "lint": "eslint {src,test}/**/*.js webpack.config.js",
-    "format": "prettier {src,test}/**/*.js  webpack.config.js  --write",
-    "precommit": "pretty-quick --staged"
+    "format": "prettier {src,test}/**/*.js  webpack.config.js  --write"
   },
   "author": "Supabase",
   "license": "MIT",
@@ -25,7 +24,6 @@
     "husky": "^0.14.3",
     "mocha": "^5.0.4",
     "prettier": "^1.19.1",
-    "pretty-quick": "^1.4.1",
     "webpack": "^4.1.1",
     "webpack-cli": "^3.3.0"
   },

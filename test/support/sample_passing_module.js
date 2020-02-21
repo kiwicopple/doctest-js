@@ -65,13 +65,11 @@ export function split(string, delimter) {
 /**
  * @example
  * add(1, 2)
- * //=> 3
- *
+ * //=> 3 
  * @example
  * add(3, 4)
  * //=>
  * 7
- *
  * @example
  * add(3, 4)
  * //=> 7
