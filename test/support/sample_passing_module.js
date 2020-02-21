@@ -35,17 +35,6 @@ export function titleize(word) {
  *   vowels: 2,
  *   consonants: 2
  * }
- *
- * @example
- * stringData(
- *   'woah'
- * )
- * //=>
- * {
- *   length: 4,
- *   vowels: 2,
- *   consonants: 2
- * }
  */
 export function stringData(string) {
   const vowels = string
@@ -68,12 +57,25 @@ export function stringData(string) {
  * @example
  * split('why am i doing this?', ' ')
  * //=> [ 'why', 'am', 'i', 'doing', 'this?' ]
- *
- * @example
- * split('why am i doing this?', ' ')
- * //=>
- * [ 'why', 'am', 'i', 'doing', 'this?' ]
  */
 export function split(string, delimter) {
   return string.split(delimter);
+}
+
+/**
+ * @example
+ * add(1, 2)
+ * //=> 3
+ *
+ * @example
+ * add(3, 4)
+ * //=>
+ * 7
+ *
+ * @example
+ * add(3, 4)
+ * //=> 7
+ */
+export function add(a, b) {
+  return a + b;
 }
