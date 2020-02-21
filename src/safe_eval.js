@@ -13,7 +13,6 @@ export const evalExpression = (evalString, filePath) => {
 
 export const evalValue = (evalString) => {
   const wrappedEvalString = `(${evalString})`;
-  console.log('wrappedEvalString', wrappedEvalString);
   try {
     return { result: eval(wrappedEvalString) };
   } catch (error) {
