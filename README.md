@@ -1,94 +1,87 @@
-# JS-Doctest
+# doctest-js
 
-Run [JSDoc](http://usejsdoc.org/about-getting-started.html) style doc examples as tests within your test suite
+Let your documentation be your testing suite. Write [JSDoc](http://usejsdoc.org/about-getting-started.html) style doc examples on all your functions and then test them using `doctest-js`.
 
-Inspired by [Elixir Doctests](https://elixir-lang.org/getting-started/mix-otp/docs-tests-and-with.html)
+**Contents**
 
-[![npm version](https://badge.fury.io/js/jsdoc-test.svg)](https://badge.fury.io/js/jsdoc-test)
-[![Build Status](https://travis-ci.org/MainShayne233/js-doctest.svg?branch=master)](https://travis-ci.org/MainShayne233/js-doctest)
+* [Usage](#usage)
+  * [1. Install](#1-install)
+  * [2. Write @example comments](#2-write-example-comments)
+  * [3. Run the tests](#3-run-the-tests)
+* [FAQ's](#faqs)
+  * [Do I have to write @param, @returns etc?](#do-i-have-to-write-param-returns-etc)
+  * [How do I specify the return value of the test?](#how-do-i-specify-the-return-value-of-the-test)
+  * [Can I have more than one test per function?](#can-i-have-more-than-one-test-per-function)
+  * [I have a long return value. Does it have to go on one line?](#i-have-a-long-return-value-does-it-have-to-go-on-one-line)
+  * [Does this work for classes and private functions?](#does-this-work-for-classes-and-private-functions)
+* [Credits](#credits)
 
-Write a function with a [JSDoc style documentation](http://usejsdoc.org/about-getting-started.html)
+## Usage
+
+### 1. Install
+
+```sh
+npm install @supabase/doctest-js
+```
+
+### 2. Write @example comments
+
+Create a [JSDoc style comment](http://usejsdoc.org/about-getting-started.html) on any functions that you want tested.
 
 ```javascript
 /**
- * Returns fairly unnecessary and uninteresting information about a string
- * @param {string} string - The string of disinterest
- * @return {object} Useless information
+ * Returns the sum of 2 numbers
+ *
  * @example
- * stringData('woah')
- * //=>
- * {
- *   length: 4,
- *   vowels: 2,
- *   consonants: 2,
- * }
+ * sum(1, 2)
+ * //=> 3
+ *
+ * @example
+ * sum(3, 4)
+ * //=> 7
  */
-export function stringData(string) {
-  const vowels = string
-    .toLowerCase()
-    .split('')
-    .filter((char) => {
-      return ['a', 'e', 'i', 'o', 'u', 'y'].find((v) => char === v);
-    }).length;
-  return {
-    length: string.length,
-    vowels: vowels,
-    consonants: string.length - vowels,
-  };
+export function sum(a, b) {
+  return a + b;
 }
 ```
+
+### 3. Run the tests
 
 Import the doctest function in your test suite and point it at the file.
 
 ```javascript
-import doctest from 'jsdoc-test';
+import doctests from '@supabase/doctest-js';
 
-describe('stringData Doctests', () => {
-  doctest('src/string/index.js'); // path is relative to root of directory
+describe('Doctests', () => {
+  // file paths are relative to root of directory
+  doctest('src/sum.js');
+  doctest('src/someOtherFile.js');
 });
 ```
 
-And this will run and test all instances of `@example` in the given file
+## FAQ's
 
-Notes:
+### Do I have to write @param, @returns etc?
 
-* The only [JSDoc](http://usejsdoc.org/about-getting-started.html) component
-  you need is the `@example`.
-* You can have as many `@examples` as you'd like for any one function.
-* Example function calls and return values can span multiple lines.
-* Currently only works for exported functions
+The only [JSDoc](http://usejsdoc.org/about-getting-started.html) component you need is the `@example`.
 
-## Testing Function
+### How do I specify the return value of the test?
 
-By default, `doctest` will use a basic [chai](https://github.com/chaijs/chai)
-expect as its testing function.
+The tests will look for any value after the `//=>` symbol
 
-```javascript
-it(`${functionName} should match its doc example value`, () => {
-  expect(actualReturnValue).to.eql(expectedReturnValue);
-});
-```
+### Can I have more than one test per function?
 
-But this function can be overridden by any function that takes three arguments:
+Yes. You can have as many `@examples` as you'd like for any one function.
 
-`(actualValue, expectedValue, doctestObject, doctestIndex)`.
+### I have a long return value. Does it have to go on one line?
 
-Where the `doctestObject` is the parsed doctest that looks like:
+No. Example function calls and return values can span multiple lines.
 
-```
-{
-  resultString: 'titleize('WoAh')',
-  stringToEval: 'Woah',
-}
-```
+### Does this work for classes and private functions?
 
-```javascript
-describe('stringData Doctests', () => {
-  doctest('src/string/index.js', {
-    testingFunction: (actual, expected, doctestObject, doctestIndex) => {
-      if (actual === expected) console.log(functionName + ', you did it!');
-      else console.log('Better luck next time, ' + functionName);
-    },
-  });
-});
-```
+No. Currently it only works for exported functions.
+
+## Credits
+
+* Inspired by [Elixir Doctests](https://elixir-lang.org/getting-started/mix-otp/docs-tests-and-with.html)
+* Original fork of mainshayne223/doctest-js
