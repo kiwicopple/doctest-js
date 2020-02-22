@@ -31,7 +31,7 @@ npm install @supabase/doctest-js
 
 ### 2. Write @example comments
 
-Create a [JSDoc style comment](http://usejsdoc.org/about-getting-started.html) on any functions that you want tested. 
+Create a [JSDoc style @example](https://jsdoc.app/tags-example.html) on any functions that you want tested. 
 
 ```javascript
 /**
@@ -45,7 +45,7 @@ export const sum = (a, b) => {
 }
 ```
 
-Use `@example function(param)` to 
+Note that the expected return value must be prefixed by `//=>`.
 
 ### 3. Run the tests
 
