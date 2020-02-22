@@ -10,13 +10,12 @@
  * //=> 'd'
  */
 export function dig(object, nestedKeys) {
-  const keys =
-    nestedKeys.constructor === Array ? nestedKeys : nestedKeys.split('.');
-  let value = object;
-  keys.forEach((key) => {
-    value = value[key];
-  });
-  return value;
+  const keys = nestedKeys.constructor === Array ? nestedKeys : nestedKeys.split('.')
+  let value = object
+  keys.forEach(key => {
+    value = value[key]
+  })
+  return value
 }
 
 /**
@@ -29,12 +28,12 @@ export function dig(object, nestedKeys) {
  * //=> {odd: [1, 1, 3, 5, 11], even: [2, 8]}
  */
 export function groupBy(elements, fun) {
-  const grouping = {};
-  elements.forEach((element) => {
-    const value = fun(element);
-    grouping[value] = (grouping[value] || []).concat([element]);
-  });
-  return grouping;
+  const grouping = {}
+  elements.forEach(element => {
+    const value = fun(element)
+    grouping[value] = (grouping[value] || []).concat([element])
+  })
+  return grouping
 }
 
 /** Returns the keypaths for the object
@@ -45,15 +44,15 @@ export function groupBy(elements, fun) {
  * //=> [ ['a'], ['a', 'b'], ['a', 'b', '0']  ]
  */
 export function keyPaths(object, parentKeys = []) {
-  const type = object.constructor;
-  if (type !== Array && type !== Object) return [parentKeys];
-  let paths = [];
-  if (parentKeys.length) paths = paths.concat([parentKeys]);
-  Object.keys(object).forEach((key) => {
-    const subKeyPaths = keyPaths(object[key], parentKeys.concat([key]));
-    paths = paths.concat(subKeyPaths);
-  });
-  return paths;
+  const type = object.constructor
+  if (type !== Array && type !== Object) return [parentKeys]
+  let paths = []
+  if (parentKeys.length) paths = paths.concat([parentKeys])
+  Object.keys(object).forEach(key => {
+    const subKeyPaths = keyPaths(object[key], parentKeys.concat([key]))
+    paths = paths.concat(subKeyPaths)
+  })
+  return paths
 }
 
 /**
@@ -67,14 +66,14 @@ export function keyPaths(object, parentKeys = []) {
  * //=> {woah: 'we', didnt: 'merge', allthe: 'way'}
  */
 export function merge(object1, object2) {
-  const newObject = {};
-  Object.keys(object1).forEach((key) => {
-    newObject[key] = object1[key];
-  });
-  Object.keys(object2).forEach((key) => {
-    newObject[key] = object2[key];
-  });
-  return newObject;
+  const newObject = {}
+  Object.keys(object1).forEach(key => {
+    newObject[key] = object1[key]
+  })
+  Object.keys(object2).forEach(key => {
+    newObject[key] = object2[key]
+  })
+  return newObject
 }
 
 /**
@@ -86,9 +85,9 @@ export function merge(object1, object2) {
  * //=> [ , 'one', 'two' ]
  */
 export function numberKeyedObjectToArray(object) {
-  const array = [];
-  Object.keys(object).forEach((key) => {
-    array[key] = object[key];
-  });
-  return array;
+  const array = []
+  Object.keys(object).forEach(key => {
+    array[key] = object[key]
+  })
+  return array
 }

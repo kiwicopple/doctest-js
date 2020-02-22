@@ -1,36 +1,36 @@
 /* eslint no-eval: "off", no-console: "off" */
-import path from 'path';
+import path from 'path'
 
 export const evalExpression = (evalString, filePath) => {
   try {
-    const code = `require('${filePath}').${evalString}`;
-    const result = eval(code);
-    return { result };
+    const code = `require('${filePath}').${evalString}`
+    const result = eval(code)
+    return { result }
   } catch (error) {
-    return { error };
+    return { error }
   }
-};
+}
 
-export const evalValue = (evalString) => {
-  const wrappedEvalString = `(${evalString})`;
+export const evalValue = evalString => {
+  const wrappedEvalString = `(${evalString})`
   try {
-    return { result: eval(wrappedEvalString) };
+    return { result: eval(wrappedEvalString) }
   } catch (error) {
-    return { error };
+    return { error }
   }
-};
+}
 
 export default ({ resultString, stringToEval }, filePath, instance) => {
-  const fullFilePath = path.join(process.cwd(), filePath);
+  const fullFilePath = path.join(process.cwd(), filePath)
 
   if (!instance) {
-    const actual = evalExpression(resultString, fullFilePath);
-    const expected = evalValue(stringToEval);
-    return { actual, expected };
+    const actual = evalExpression(resultString, fullFilePath)
+    const expected = evalValue(stringToEval)
+    return { actual, expected }
   } else {
-    const result = eval(`instance.${resultString};`);
-    const actual = { result };
-    const expected = evalValue(stringToEval);
-    return { actual, expected };
+    const result = eval(`instance.${resultString};`)
+    const actual = { result }
+    const expected = evalValue(stringToEval)
+    return { actual, expected }
   }
-};
+}

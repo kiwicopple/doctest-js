@@ -1,4 +1,4 @@
-const path = require('path');
+const path = require('path')
 
 module.exports = {
   devtool: false,
@@ -28,4 +28,4 @@ module.exports = {
     ],
   },
   target: 'node',
-};
+}

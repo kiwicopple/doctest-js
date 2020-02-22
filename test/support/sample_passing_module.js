@@ -14,11 +14,11 @@
 export function titleize(word) {
   switch (word.length) {
     case 0:
-      return '';
+      return ''
     case 1:
-      return word.toUpperCase();
+      return word.toUpperCase()
     default:
-      return word[0].toUpperCase() + word.slice(1, word.length).toLowerCase();
+      return word[0].toUpperCase() + word.slice(1, word.length).toLowerCase()
   }
 }
 
@@ -40,13 +40,12 @@ export function stringData(string) {
   const vowels = string
     .toLowerCase()
     .split('')
-    .filter((char) => ['a', 'e', 'i', 'o', 'u', 'y'].find((v) => char === v))
-    .length;
+    .filter(char => ['a', 'e', 'i', 'o', 'u', 'y'].find(v => char === v)).length
   return {
     vowels,
     length: string.length,
     consonants: string.length - vowels,
-  };
+  }
 }
 
 /**
@@ -59,32 +58,31 @@ export function stringData(string) {
  * //=> [ 'why', 'am', 'i', 'doing', 'this?' ]
  */
 export function split(string, delimter) {
-  return string.split(delimter);
+  return string.split(delimter)
 }
 
 /**
  * @example
  * add(1, 2)
- * //=> 3 
+ * //=> 3
  * @example add(3, 4)
  * //=> 7
  * @example add(3, 4)
  * //=> 7
  */
 export function add(a, b) {
-  return a + b;
+  return a + b
 }
-
 
 /**
  * Github Issue: https://github.com/supabase/doctest-js/issues/1
- * @param {object} obj 
+ * @param {object} obj
  * @private
  * @returns {string}
  *
  * @example objectToQueryString({
- *  param1: 'hello', 
- *  param2: 'world' 
+ *  param1: 'hello',
+ *  param2: 'world'
  * })
  * //=> 'param1=hello&param2=world'
  */
@@ -101,11 +99,11 @@ export function objectToQueryString(obj) {
  * @param {{name: String, type: String}[]} columns All of the columns
  * @param {Object} records The map of string values
  * @param {Array} skipTypes An array of types that should not be converted
- * 
+ *
  * @example convertColumn(
- *  'age', 
- *  [{name: 'first_name', type: 'text'}, {name: 'age', type: 'int4'}], 
- *  ['Paul', '33'], 
+ *  'age',
+ *  [{name: 'first_name', type: 'text'}, {name: 'age', type: 'int4'}],
+ *  ['Paul', '33'],
  *  []
  * )
  * //=> 33
@@ -118,12 +116,12 @@ export function objectToQueryString(obj) {
  * //=> '33'
  */
 export const convertColumn = (columnName, columns, records, skipTypes) => {
-  let column = columns.find((x) => x.name == columnName)
-  let columnNum = columns.findIndex((x) => x.name == columnName)
-  if(skipTypes.includes(column.type)) return noop(records[columnNum]);
-  else return convertCell(column.type, records[columnNum]);
+  let column = columns.find(x => x.name == columnName)
+  let columnNum = columns.findIndex(x => x.name == columnName)
+  if (skipTypes.includes(column.type)) return noop(records[columnNum])
+  else return convertCell(column.type, records[columnNum])
 }
-export const noop = (val) => {
+export const noop = val => {
   return val
 }
 export const convertCell = (type, val) => {

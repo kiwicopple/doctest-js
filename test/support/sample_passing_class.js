@@ -12,7 +12,7 @@ class Arithmatic {
    * //=> 10
    */
   add(a, b) {
-    return a + b;
+    return a + b
   }
 
   /**
@@ -21,8 +21,8 @@ class Arithmatic {
    * //=> 8
    */
   subtract(a, b) {
-    return a - b;
+    return a - b
   }
 }
 
-export { Arithmatic };
+export { Arithmatic }

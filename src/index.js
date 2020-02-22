@@ -1,3 +1,3 @@
-import doctest from './doctest';
+import doctest from './doctest'
 
-export default doctest;
+export default doctest
