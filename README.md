@@ -56,9 +56,9 @@ import doctests from '@supabase/doctest-js';
 
 describe('Doctests', () => {
   // file paths are relative to root of directory
-  doctest('src/sum.js');
-  doctest('src/someOtherFile.js');
-});
+  doctest('src/sum.js')
+  doctest('src/someOtherFile.js')
+})
 ```
 
 ## Advanced
@@ -105,11 +105,11 @@ export { Arithmetic }
 ```js
 // Arithmetic.test.js
 
-const { Arithmetic } = require('./Arithmetic.js');
+const { Arithmetic } = require('./Arithmetic.js')
 
 describe('passing doctest', () => {
-  doctest('./Arithmetic.js', { instance: new Arithmetic() });
-});
+  doctest('./Arithmetic.js', { instance: new Arithmetic() })
+})
 ```
 
 
