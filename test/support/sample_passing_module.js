@@ -74,3 +74,58 @@ export function split(string, delimter) {
 export function add(a, b) {
   return a + b;
 }
+
+
+/**
+ * Github Issue: https://github.com/supabase/doctest-js/issues/1
+ * @param {object} obj 
+ * @private
+ * @returns {string}
+ *
+ * @example objectToQueryString({
+ *  param1: 'hello', 
+ *  param2: 'world' 
+ * })
+ * //=> 'param1=hello&param2=world'
+ */
+export function objectToQueryString(obj) {
+  return Object.keys(obj)
+    .map(param => `${param}=${obj[param]}`)
+    .join('&')
+}
+
+/**
+ * Github Issue: https://github.com/supabase/doctest-js/issues/1
+ * Converts the value of an individual column
+ * @param {String} columnName The column that you want to convert
+ * @param {{name: String, type: String}[]} columns All of the columns
+ * @param {Object} records The map of string values
+ * @param {Array} skipTypes An array of types that should not be converted
+ * 
+ * @example convertColumn(
+ *  'age', 
+ *  [{name: 'first_name', type: 'text'}, {name: 'age', type: 'int4'}], 
+ *  ['Paul', '33'], 
+ *  []
+ * )
+ * //=> 33
+ * @example convertColumn(
+ *  'age',
+ *  [{name: 'first_name', type: 'text'}, {name: 'age', type: 'int4'}],
+ *  ['Paul', '33'],
+ *  ['int4']
+ * )
+ * //=> '33'
+ */
+export const convertColumn = (columnName, columns, records, skipTypes) => {
+  let column = columns.find((x) => x.name == columnName)
+  let columnNum = columns.findIndex((x) => x.name == columnName)
+  if(skipTypes.includes(column.type)) return noop(records[columnNum]);
+  else return convertCell(column.type, records[columnNum]);
+}
+export const noop = (val) => {
+  return val
+}
+export const convertCell = (type, val) => {
+  return parseInt(val)
+}
