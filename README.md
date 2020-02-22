@@ -84,9 +84,9 @@ export const sum = (a, b) => {
 Testing classes requires you to pass a newed up instance of the class into the test itself. Here is a simple example:
 
 ```js
-// Arithmatic.js - a basic class which we need to test
+// Arithmetic.js - a basic class which we need to test
 
-class Arithmatic {
+class Arithmetic {
   constructor() {}
 
   /**
@@ -99,16 +99,16 @@ class Arithmatic {
   }
 }
 
-export { Arithmatic }
+export { Arithmetic }
 ```
 
 ```js
-// Arithmatic.test.js
+// Arithmetic.test.js
 
-const { Arithmatic } = require('./Arithmatic.js');
+const { Arithmetic } = require('./Arithmetic.js');
 
 describe('passing doctest', () => {
-  doctest('./Arithmatic.js', { instance: new Arithmatic() });
+  doctest('./Arithmetic.js', { instance: new Arithmetic() });
 });
 ```
 

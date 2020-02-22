@@ -1,6 +1,6 @@
 // This is an example of a string helper module
 
-class Arithmatic {
+class Arithmetic {
   constructor() {}
 
   /**
@@ -25,4 +25,4 @@ class Arithmatic {
   }
 }
 
-export { Arithmatic }
+export { Arithmetic }
