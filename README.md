@@ -121,14 +121,14 @@ Here are some tips:
 
 <table style="width: 100%;">
 <tr>
+  <td colspan="2" style="text-align: center;">
+  1. Try putting the @example declaration and function on the same line
+  </td>
+</tr>
+<tr>
   <th style="width: 50%;">Do</th>
   <th style="width: 50%;">Avoid</th>
 </th>
-</tr>
-<tr>
-  <td colspan="2" style="text-align: center;">
-  Try putting the @example declaration and function on the same line
-  </td>
 </tr>
 <tr>
   <td>
@@ -147,8 +147,13 @@ Here are some tips:
 </tr>
 <tr>
   <td colspan="2" style="text-align: center;">
-  Try putting the return value on one line
+  2.Try putting the return value on one line
   </td>
+</tr>
+<tr>
+  <th style="width: 50%;">Do</th>
+  <th style="width: 50%;">Avoid</th>
+</th>
 </tr>
 <tr>
   <td>
@@ -169,8 +174,13 @@ Here are some tips:
 </tr>
 <tr>
   <td colspan="2" style="text-align: center;">
-  Try removing spaces between multiple tests
+  3.Try removing spaces between multiple tests
   </td>
+</tr>
+<tr>
+  <th style="width: 50%;">Do</th>
+  <th style="width: 50%;">Avoid</th>
+</th>
 </tr>
 <tr>
   <td>
