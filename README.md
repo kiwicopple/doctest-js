@@ -14,7 +14,7 @@ Write [JSDoc](http://usejsdoc.org/about-getting-started.html) style doc examples
   - [Multiple tests](#multiple-tests)
   - [Testing classes](#testing-classes)
 - [FAQ's](#faqs)
-  - [Why ins't my test working?](#why-inst-my-test-working)
+  - [Why isn't my test working?](#why-isnt-my-test-working)
   - [Do I have to write @param, @returns etc?](#do-i-have-to-write-param-returns-etc)
   - [I have a long return value. Does it have to go on one line?](#i-have-a-long-return-value-does-it-have-to-go-on-one-line)
 - [Usage online](#usage-online)
@@ -115,7 +115,7 @@ describe('passing doctest', () => {
 
 ## FAQ's
 
-### Why ins't my test working?
+### Why isn't my test working?
 
 Here are some tips:
 
@@ -208,19 +208,18 @@ Here are some tips:
 
 ### Do I have to write @param, @returns etc?
 
-The only [JSDoc](http://usejsdoc.org/about-getting-started.html) component you need is the `@example`.
+The only JSDoc component you need is the `@example`.
 
 ### I have a long return value. Does it have to go on one line?
 
-No. Example function calls and return values can span multiple lines but as mentioned above, it may cause problems (with our parser ... PR's welcome!).
+No. Example function calls and return values can span multiple lines but as mentioned above, it may cause problems (with the parser ... PR's welcome!).
 
 
 ## Usage online 
 
 See this in the wild:
 
-- @todo
-
+- [supabase/postgrest-js](https://github.com/supabase/postgrest-js/blob/master/test/unit/Doctests.test.js)
 
 ## Contributing
 
