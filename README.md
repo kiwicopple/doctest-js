@@ -223,4 +223,4 @@ See this in the wild:
 ## Credits
 
 * Inspired by [Elixir Doctests](https://elixir-lang.org/getting-started/mix-otp/docs-tests-and-with.html)
-* Original fork of mainshayne223/doctest-js
+* Original fork of [mainshayne223/doctest-js](https://github.com/MainShayne233/js-doctest). See [issue #1](https://github.com/MainShayne233/js-doctest/issues/1).
