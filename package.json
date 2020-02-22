@@ -1,6 +1,6 @@
 {
   "name": "@supabase/doctest-js",
-  "version": "0.0.10",
+  "version": "0.1.0",
   "description": "Run doc examples as tests",
   "main": "dist/index.js",
   "scripts": {
