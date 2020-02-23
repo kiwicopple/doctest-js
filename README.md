@@ -16,6 +16,11 @@ Write [JSDoc](http://usejsdoc.org/about-getting-started.html) style doc examples
 - [Usage online](#usage-online)
 - [Contributing](#contributing)
 - [Credits](#credits)
+- [Status](#status)
+c  - [Testing classes](#testing-classes)
+- [Usage online](#usage-online)
+- [Contributing](#contributing)
+- [Credits](#credits)
 
 ## Getting Started
 
@@ -126,3 +131,9 @@ See this in the wild:
 
 * Inspired by [Elixir Doctests](https://elixir-lang.org/getting-started/mix-otp/docs-tests-and-with.html)
 * Original fork of [mainshayne223/doctest-js](https://github.com/MainShayne233/js-doctest). See [issue #1](https://github.com/MainShayne233/js-doctest/issues/1).
+
+## Status
+
+Ready for production! Watch and star this repo to keep updated on releases.
+
+![Watch this repo](https://gitcdn.xyz/repo/supabase/monorepo/master/web/static/watch-repo.gif "Watch this repo")
