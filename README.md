@@ -17,10 +17,6 @@ Write [JSDoc](http://usejsdoc.org/about-getting-started.html) style doc examples
 - [Contributing](#contributing)
 - [Credits](#credits)
 - [Status](#status)
-c  - [Testing classes](#testing-classes)
-- [Usage online](#usage-online)
-- [Contributing](#contributing)
-- [Credits](#credits)
 
 ## Getting Started
 
@@ -53,7 +49,7 @@ Note that the expected return value must be prefixed by `//=>`.
 Import the doctest function in your test suite and point it at the file.
 
 ```javascript
-import doctests from '@supabase/doctest-js';
+import doctest from '@supabase/doctest-js';
 
 describe('Doctests', () => {
   // file paths are relative to root of directory
