@@ -87,8 +87,7 @@ class Arithmetic {
   constructor() {}
 
   /**
-   * @example
-   * add(1, 2)
+   * @example add(1, 2)
    * //=> 3
    */
   add(a, b) {
