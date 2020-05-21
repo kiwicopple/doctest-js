@@ -36,6 +36,6 @@ describe('evalValue', () => {
     const evalString = '* 5 *'
     const { error } = evalValue(evalString)
     expect(error.constructor).to.equal(SyntaxError)
-    expect(error.message).to.equal('Unexpected token *')
+    expect(error.message).to.equal("Unexpected token '*'")
   })
 })
