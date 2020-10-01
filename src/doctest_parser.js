@@ -58,16 +58,32 @@ export default text => {
 
   // ignore multi-line comment start
   // this is a bit naive as it only uses spaces/indentation to cleanse
-  lexer.addRule(/\n\* / && /\r\n\* /, () => {})
-  lexer.addRule(/\n \* / && /\r\n \* /, () => {})
-  lexer.addRule(/\n  \* / && /\r\n  \* /, () => {})
-  lexer.addRule(/\n   \* / && /\r\n   \* /, () => {})
-  lexer.addRule(/\n    \* / && /\r\n    \* /, () => {})
-  lexer.addRule(/\n     \* / && /\r\n     \* /, () => {})
-  lexer.addRule(/\n      \* / && /\r\n      \* /, () => {})
+  lexer.addRule(/\n\* /, () => {})
+  lexer.addRule(/\r\n\* /, () => {})
+  lexer.addRule(/\n \* /, () => {})
+  lexer.addRule(/\r\n \* /, () => {})
+  lexer.addRule(/\n  \* /, () => {})
+  lexer.addRule(/\r\n  \* /, () => {})
+  lexer.addRule(/\n   \* /, () => {})
+  lexer.addRule(/\r\n   \* /, () => {})
+  lexer.addRule(/\n    \* /, () => {})
+  lexer.addRule(/\r\n    \* /, () => {})
+  lexer.addRule(/\n     \* /, () => {})
+  lexer.addRule(/\r\n     \* /, () => {})
+  lexer.addRule(/\n      \* /, () => {})
+  lexer.addRule(/\r\n      \* /, () => {})
 
   // add chars to appropriate section
-  lexer.addRule(/\n|./ && /\r\n|./, lexme => {
+  
+  lexer.addRule(/\n|./, lexme => {
+    if (state === IN_EXAMPLE) {
+      doctests[doctestIndex].resultString += lexme
+    } else if (state === IN_RETURN_VALUE) {
+      doctests[doctestIndex].stringToEval += lexme
+    }
+  })
+
+  lexer.addRule(/\r\n|./, lexme => {
     if (state === IN_EXAMPLE) {
       doctests[doctestIndex].resultString += lexme
     } else if (state === IN_RETURN_VALUE) {
