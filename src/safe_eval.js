@@ -1,9 +1,12 @@
+import { Console } from 'console'
 /* eslint no-eval: "off", no-console: "off" */
 import path from 'path'
 
 export const evalExpression = (evalString, filePath) => {
   try {
+    console.log("EVAL EXPRESSION")
     const code = `require('${filePath}').${evalString}`
+    console.log(code)
     const result = eval(code)
     return { result }
   } catch (error) {
@@ -22,7 +25,7 @@ export const evalValue = evalString => {
 
 export default ({ resultString, stringToEval }, filePath, instance) => {
   const fullFilePath = path.join(process.cwd(), filePath)
-
+  console.log(fullFilePath)
   if (!instance) {
     const actual = evalExpression(resultString, fullFilePath)
     const expected = evalValue(stringToEval)
