@@ -3,6 +3,7 @@ import path from 'path'
 
 export const evalExpression = (evalString, filePath) => {
   try {
+    if (filePath !== undefined) filePath = filePath.replace(/\\/g,'/');
     const code = `require('${filePath}').${evalString}`
     const result = eval(code)
     return { result }
@@ -22,7 +23,6 @@ export const evalValue = evalString => {
 
 export default ({ resultString, stringToEval }, filePath, instance) => {
   const fullFilePath = path.join(process.cwd(), filePath)
-
   if (!instance) {
     const actual = evalExpression(resultString, fullFilePath)
     const expected = evalValue(stringToEval)

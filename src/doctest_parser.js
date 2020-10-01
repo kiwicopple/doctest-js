@@ -19,12 +19,10 @@ export default text => {
   const lexer = new Lexer()
   const parser = new Parser(grammar)
   parser.lexer = lexer
-
   const doctests = []
   let doctestIndex = -1
   let state = NO_STATE
   let isClass = false
-
   // begin multi-line comment
   lexer.addRule(/\/\*/, () => {
     if (state === NO_STATE) {
@@ -61,15 +59,31 @@ export default text => {
   // ignore multi-line comment start
   // this is a bit naive as it only uses spaces/indentation to cleanse
   lexer.addRule(/\n\* /, () => {})
+  lexer.addRule(/\r\n\* /, () => {})
   lexer.addRule(/\n \* /, () => {})
+  lexer.addRule(/\r\n \* /, () => {})
   lexer.addRule(/\n  \* /, () => {})
+  lexer.addRule(/\r\n  \* /, () => {})
   lexer.addRule(/\n   \* /, () => {})
+  lexer.addRule(/\r\n   \* /, () => {})
   lexer.addRule(/\n    \* /, () => {})
+  lexer.addRule(/\r\n    \* /, () => {})
   lexer.addRule(/\n     \* /, () => {})
+  lexer.addRule(/\r\n     \* /, () => {})
   lexer.addRule(/\n      \* /, () => {})
+  lexer.addRule(/\r\n      \* /, () => {})
 
   // add chars to appropriate section
+  
   lexer.addRule(/\n|./, lexme => {
+    if (state === IN_EXAMPLE) {
+      doctests[doctestIndex].resultString += lexme
+    } else if (state === IN_RETURN_VALUE) {
+      doctests[doctestIndex].stringToEval += lexme
+    }
+  })
+
+  lexer.addRule(/\r\n|./, lexme => {
     if (state === IN_EXAMPLE) {
       doctests[doctestIndex].resultString += lexme
     } else if (state === IN_RETURN_VALUE) {
@@ -79,14 +93,11 @@ export default text => {
 
   // eof
   lexer.addRule(/$/, () => 'EOF')
-
   parser.parse(text)
-
   // trim everythhing
   const sanitizedDoctests = doctests.map(({ resultString, stringToEval }) => ({
     resultString: resultString.trim(),
     stringToEval: stringToEval.trim(),
   }))
-
   return sanitizedDoctests
 }
