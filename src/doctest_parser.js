@@ -16,18 +16,13 @@ const grammar = {
 
 export default text => {
   // lexer parser setup
-  console.log(1)
   const lexer = new Lexer()
-  console.log(2)
   const parser = new Parser(grammar)
-  console.log(3)
   parser.lexer = lexer
-  console.log(4)
   const doctests = []
   let doctestIndex = -1
   let state = NO_STATE
   let isClass = false
-  console.log(5)
   // begin multi-line comment
   lexer.addRule(/\/\*/, () => {
     if (state === NO_STATE) {
@@ -82,14 +77,11 @@ export default text => {
 
   // eof
   lexer.addRule(/$/, () => 'EOF')
-  console.log(6)
   parser.parse(text)
-  console.log(7)
   // trim everythhing
   const sanitizedDoctests = doctests.map(({ resultString, stringToEval }) => ({
     resultString: resultString.trim(),
     stringToEval: stringToEval.trim(),
   }))
-  console.log('OK')
   return sanitizedDoctests
 }

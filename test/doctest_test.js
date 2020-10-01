@@ -6,15 +6,11 @@ const SAMPLE_PASSING_MODULE_PATH = './test/support/sample_passing_module.js'
 const SAMPLE_PASSING_CLASS_PATH = './test/support/sample_passing_class.js'
 const SAMPLE_FAILING_MODULE_PATH = './test/support/sample_failing_module.js'
 const SAMPLE_ERROR_MODULE_PATH = './test/support/sample_error_module.js'
-console.log(SAMPLE_PASSING_MODULE_PATH);
 const { Arithmetic } = require('./support/sample_passing_class.js')
 
 describe('passing doctest', () => {
-  console.log('here')
   doctest(SAMPLE_PASSING_MODULE_PATH)
-  console.log('here 2')
   doctest(SAMPLE_PASSING_CLASS_PATH, { instance: new Arithmetic() })
-  console.log('here 3')
 })
 
 describe('failing doctest', () => {
