@@ -3,7 +3,7 @@ import path from 'path'
 
 export const evalExpression = (evalString, filePath) => {
   try {
-    if (filePath != null) filePath = filePath.replace(/\\/g,'/');
+    if (filePath !== undefined) filePath = filePath.replace(/\\/g,'/');
     const code = `require('${filePath}').${evalString}`
     const result = eval(code)
     return { result }
