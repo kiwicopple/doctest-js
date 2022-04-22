@@ -1,3 +1,7 @@
+/* eslint-disable import/prefer-default-export */
+/* eslint-disable class-methods-use-this */
+/* eslint-disable no-empty-function */
+/* eslint-disable no-useless-constructor */
 // This is an example of a string helper module
 
 class Arithmetic {

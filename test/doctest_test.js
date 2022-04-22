@@ -6,7 +6,7 @@ const SAMPLE_PASSING_MODULE_PATH = './test/support/sample_passing_module.js'
 const SAMPLE_PASSING_CLASS_PATH = './test/support/sample_passing_class.js'
 const SAMPLE_FAILING_MODULE_PATH = './test/support/sample_failing_module.js'
 const SAMPLE_ERROR_MODULE_PATH = './test/support/sample_error_module.js'
-const { Arithmetic } = require('./support/sample_passing_class.js')
+const { Arithmetic } = require('./support/sample_passing_class')
 
 describe('passing doctest', () => {
   doctest(SAMPLE_PASSING_MODULE_PATH)
