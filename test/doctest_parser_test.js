@@ -1,7 +1,9 @@
 /* globals it describe */
 import fs from 'fs'
-import { expect } from 'chai'
-import parseDoctests from '../src/doctest_parser'
+import chai from 'chai'
+import parseDoctests from '../src/doctest_parser.js'
+
+const { expect } = chai
 
 const SAMPLE_MODULE = './test/support/sample_passing_module.js'
 const FILE = fs.readFileSync(SAMPLE_MODULE, 'utf8')

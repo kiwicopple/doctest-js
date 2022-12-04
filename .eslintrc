@@ -4,6 +4,7 @@
     "prettier"
   ],
   "rules": {
-    "function-paren-newline": "off"
+    "function-paren-newline": "off",
+    "import/extensions": "off"
   }
 }

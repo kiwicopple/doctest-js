@@ -1,5 +1,7 @@
-import { Parser } from 'jison'
+import jison from 'jison'
 import Lexer from 'lex'
+
+const { Parser } = jison
 
 // parser states
 const NO_STATE = 'NO_STATE'

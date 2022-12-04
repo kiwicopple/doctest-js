@@ -1,11 +1,11 @@
 /* eslint no-eval: "off", no-console: "off" */
 import path from 'path'
 
-export const evalExpression = (evalString, filePath) => {
+export const evalExpression = async (evalString, filePath) => {
   try {
     const cleanPath = (filePath !== undefined) ? filePath.replace(/\\/g,'/') : filePath;
-    const code = `require('${cleanPath}').${evalString}`
-    const result = eval(code)
+    const code = `import('${cleanPath}').then(module => { return module.${evalString}; })`
+    const result = await eval(code)
     return { result }
   } catch (error) {
     return { error }
@@ -21,10 +21,10 @@ export const evalValue = evalString => {
   }
 }
 
-export default ({ resultString, stringToEval }, filePath, instance) => {
+export default async ({ resultString, stringToEval }, filePath, instance) => {
   const fullFilePath = path.join(process.cwd(), filePath)
   if (!instance) {
-    const actual = evalExpression(resultString, fullFilePath)
+    const actual = await evalExpression(resultString, fullFilePath)
     const expected = evalValue(stringToEval)
     return { actual, expected }
   }
