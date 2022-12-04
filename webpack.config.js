@@ -9,6 +9,7 @@ module.exports = {
     library: 'index',
     libraryTarget: 'commonjs2',
     filename: 'index.js',
+    hashFunction: 'xxhash64',
   },
   resolve: {
     modules: [__dirname, 'node_modules', 'src'],

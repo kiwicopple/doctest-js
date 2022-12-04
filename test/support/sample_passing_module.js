@@ -92,6 +92,9 @@ export function objectToQueryString(obj) {
     .join('&')
 }
 
+export const noop = val => val
+export const convertCell = (type, val) => parseInt(val, 10)
+
 /**
  * Github Issue: https://github.com/supabase/doctest-js/issues/1
  * Converts the value of an individual column
@@ -116,14 +119,8 @@ export function objectToQueryString(obj) {
  * //=> '33'
  */
 export const convertColumn = (columnName, columns, records, skipTypes) => {
-  let column = columns.find(x => x.name == columnName)
-  let columnNum = columns.findIndex(x => x.name == columnName)
+  const column = columns.find(x => x.name === columnName)
+  const columnNum = columns.findIndex(x => x.name === columnName)
   if (skipTypes.includes(column.type)) return noop(records[columnNum])
-  else return convertCell(column.type, records[columnNum])
-}
-export const noop = val => {
-  return val
-}
-export const convertCell = (type, val) => {
-  return parseInt(val)
+  return convertCell(column.type, records[columnNum])
 }
