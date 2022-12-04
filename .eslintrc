@@ -1,7 +1,10 @@
 {
-  "extends": "airbnb",
+  "extends": [
+    "airbnb-base",
+    "prettier"
+  ],
   "rules": {
-    "arrow-parens": ["error", "always"],
-    "function-paren-newline": "off"
+    "function-paren-newline": "off",
+    "import/extensions": "off"
   }
 }

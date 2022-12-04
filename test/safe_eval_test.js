@@ -1,17 +1,19 @@
 /* globals it describe */
-import { expect } from 'chai'
-import { evalExpression, evalValue } from '../src/safe_eval'
+import chai from 'chai'
+import { evalExpression, evalValue } from '../src/safe_eval.js'
+
+const { expect } = chai
 
 describe('evalExpression', () => {
-  it('should gracefully handle syntax errors', () => {
+  it('should gracefully handle syntax errors', async () => {
     const evalString = 'varvar funfun == () =>'
-    const { error } = evalExpression(evalString)
+    const { error } = await evalExpression(evalString)
     expect(error.constructor).to.equal(SyntaxError)
   })
 
-  it('should gracefully handle runtime errors', () => {
+  it('should gracefully handle runtime errors', async () => {
     const evalString = 'nonExistantFunction()'
-    const { error } = evalExpression(evalString)
+    const { error } = await evalExpression(evalString)
     expect(error.constructor).to.equal(Error)
   })
 })
