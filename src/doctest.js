@@ -6,9 +6,7 @@ import evalDoctest from './safe_eval'
 
 const defaultTestingFunction = (actual, expected, doctest) => {
   it(`doctest: ${doctest.resultString}`, () => {
-    if (actual.result && expected.result) {
-      expect(actual.result).to.eql(expected.result)
-    }
+    expect(actual.result).to.eql(expected.result)
   })
 }
 
